@@ -5,6 +5,7 @@ import 'package:squip/screens/login_captain/login_police/login_police.dart';
 import 'package:squip/screens/login_user/login_user.dart';
 import 'package:squip/screens/main_menu/main_menu_view.dart';
 import 'package:squip/screens/splash_screen/splash_screen_view.dart';
+import 'package:squip/screens/welcome_user/welcome_user_view.dart';
 
 void main() {
   runApp(const MyApp());
@@ -16,7 +17,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: LoginFireBrigadeView(),
+      home: WelcomeUserView(),
     );
   }
 }
