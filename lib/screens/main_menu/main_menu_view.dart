@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:squip/custom_widgets/custom_banner.dart';
 import 'package:squip/custom_widgets/custom_button.dart';
 import 'package:squip/screens/main_menu/main_menu_view_model.dart';
 import 'package:squip/utils/color_constant.dart';
@@ -15,6 +16,7 @@ class MainMenuView extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
+                    customBanner(),
                     Container(
                       width: 200,
                       // width: double.infinity,
