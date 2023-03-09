@@ -6,25 +6,29 @@ import 'package:squip/utils/color_constant.dart';
 import 'package:stacked/stacked.dart';
 
 class RequestEmergencyView extends StatelessWidget {
-  LatLng currentPosition = LatLng(25.32456, 45.324356);
+  final LatLng currentPosition = LatLng(25.1193, 55.3773);
+  late GoogleMapController mapController;
+  Map<String, Marker> _marker = {};
   @override
   Widget build(BuildContext context) {
     return ViewModelBuilder<RequestEmergencyViewModel>.reactive(
-        viewModelBuilder: () => RequestEmergencyViewModel(),
-        builder: (context, viewModel, child) => Scaffold(
-              body: SafeArea(
-                child: SingleChildScrollView(
-                  child: Column(
-                    children: [
-                      Text("Using Google map"),
-                      GoogleMap(
-                        initialCameraPosition:
-                            CameraPosition(target: LatLng(0, 0)),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-            ));
+      viewModelBuilder: () => RequestEmergencyViewModel(),
+      builder: (context, viewModel, child) => Scaffold(
+        body: GoogleMap(
+          initialCameraPosition:
+              CameraPosition(target: currentPosition, zoom: 14),
+          onMapCreated: (controller) {
+            mapController = controller;
+            addMarker('test', currentPosition);
+          },
+          markers: _marker.values.toSet(),
+        ),
+      ),
+    );
+  }
+
+  addMarker(String id, LatLng location) {
+    var marker = Marker(markerId: MarkerId(id), position: location);
+    _marker[id] = marker;
   }
 }
