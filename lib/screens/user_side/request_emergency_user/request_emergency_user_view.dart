@@ -6,8 +6,8 @@ import 'package:squip/utils/color_constant.dart';
 import 'package:stacked/stacked.dart';
 
 class RequestEmergencyView extends StatelessWidget {
-  final LatLng currentPosition = LatLng(25.1193, 55.3773);
-  late GoogleMapController mapController;
+  // final LatLng currentPosition = LatLng(25.1193, 55.3773);
+  // late GoogleMapController mapController;
   Map<String, Marker> _marker = {};
   @override
   Widget build(BuildContext context) {
@@ -16,19 +16,21 @@ class RequestEmergencyView extends StatelessWidget {
       builder: (context, viewModel, child) => Scaffold(
         body: GoogleMap(
           initialCameraPosition:
-              CameraPosition(target: currentPosition, zoom: 14),
+              CameraPosition(target: viewModel.currentPosition, zoom: 14),
           onMapCreated: (controller) {
-            mapController = controller;
-            addMarker('test', currentPosition);
+            viewModel.mapController = controller;
+            viewModel.addMarker('test', viewModel.currentPosition, _marker);
           },
           markers: _marker.values.toSet(),
         ),
+        floatingActionButton: FloatingActionButton.extended(
+          onPressed: () async {
+            viewModel.takingCurrentLocation(_marker);
+          },
+          label: const Text("Current Location"),
+          icon: const Icon(Icons.location_history),
+        ),
       ),
     );
-  }
-
-  addMarker(String id, LatLng location) {
-    var marker = Marker(markerId: MarkerId(id), position: location);
-    _marker[id] = marker;
   }
 }
