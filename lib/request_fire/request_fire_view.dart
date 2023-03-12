@@ -26,7 +26,11 @@ class RequestFireView extends StatelessWidget {
           markers: _marker.values.toSet(),
         ),
         floatingActionButton: FloatingActionButton.extended(
-          onPressed: () {},
+          onPressed: () {
+            print("clicking");
+            viewModel.goToWelcomeUser();
+            viewModel.opendialogue();
+          },
           label: const Text("Request Fire Brigade"),
           icon: const Icon(Icons.location_history),
         ),

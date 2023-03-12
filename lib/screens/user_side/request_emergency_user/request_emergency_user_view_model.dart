@@ -3,6 +3,7 @@ import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:http/http.dart' as http;
 import 'package:squip/app/app.locator.dart';
+import 'package:squip/app/app.router.dart';
 import 'package:squip/utils/image_constant.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
@@ -14,14 +15,23 @@ class RequestEmergencyViewModel extends BaseViewModel {
   var currentLongitude;
   // NearbyPlacesResponse nearbyPlacesResponse = NearbyPlacesResponse();
 
-  final nav = locator<DialogService>();
+  final dialogue = locator<DialogService>();
 
-  opendialogue() async {
-    await nav.showCustomDialog(
-      title: 'Request sent to police',
-      description: 'Police will reach instantly in 2 minutes',
-      mainButtonTitle: 'Ok',
-    );
+  final nav = locator<NavigationService>();
+
+  // gotoActiveServices() {
+  //   nav.navigateToActiveServiceView();
+  // }
+
+  opendialogue() {
+    dialogue.showDialog(
+        buttonTitle: "Ok",
+        title: "your Request sent to police, We'll arrive soon");
+    rebuildUi();
+  }
+
+  goToWelcomeUser() {
+    nav.navigateToWelcomeUserView();
   }
 
   addMarker(String customText, LatLng location, Map _marker) async {

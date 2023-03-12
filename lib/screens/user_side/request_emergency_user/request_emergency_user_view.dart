@@ -32,11 +32,9 @@ class RequestEmergencyView extends StatelessWidget {
         ),
         floatingActionButton: FloatingActionButton.extended(
           onPressed: () async {
-            viewModel.gotoActiveServices();
-            AlertDialog(
-              title: Text('Cancel booking'),
-              content: Text('Are you sure want to cancel booking?'),
-            );
+            print("clicking");
+            viewModel.goToWelcomeUser();
+            viewModel.opendialogue();
           },
           label: const Text("Request Police"),
           icon: const Icon(Icons.location_history),

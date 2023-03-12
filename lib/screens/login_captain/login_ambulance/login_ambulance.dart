@@ -7,6 +7,8 @@ import 'package:squip/utils/image_constant.dart';
 import 'package:stacked/stacked.dart';
 
 class LoginAmbulanceView extends StatelessWidget {
+  TextEditingController loginEmailController = TextEditingController();
+  TextEditingController loginPasswordController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return ViewModelBuilder<LoginAmbulanceViewModel>.reactive(
@@ -40,11 +42,22 @@ class LoginAmbulanceView extends StatelessWidget {
               child: Column(
                 children: [
                   Padding(padding: EdgeInsets.all(10)),
-                  customTextField("Email"),
+                  TextFormField(
+                    controller: loginEmailController,
+                    decoration: InputDecoration(
+                      labelText: "Email",
+                    ),
+                  ),
                   SizedBox(
                     height: 40,
                   ),
-                  customTextField("Password"),
+                  TextFormField(
+                    controller: loginPasswordController,
+                    decoration: InputDecoration(
+                      labelText: "Password",
+                    ),
+                    obscureText: true,
+                  ),
                   Align(
                     alignment: Alignment.centerRight,
                     child: TextButton(
@@ -54,14 +67,24 @@ class LoginAmbulanceView extends StatelessWidget {
                     height: 40,
                   ),
                   Container(
-                    width: double.infinity,
-                    // width: double.infinity,
-                    child: customButton(
-                        onTap: () {},
-                        text: "Login",
-                        color: whiteColor,
-                        bgColor: redColor),
-                  ),
+                      width: double.infinity,
+                      // width: double.infinity,
+                      child: ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          primary: redColor,
+                          padding: EdgeInsets.all(12),
+                        ),
+                        child: Text(
+                          "Login",
+                          style: TextStyle(
+                              color: whiteColor, backgroundColor: redColor),
+                        ),
+                        onPressed: () {
+                          viewModel.SignInUser(loginEmailController,
+                              loginPasswordController, context);
+                          // viewModel.moveToWelcomeUser();
+                        },
+                      )),
                   Text(
                     "Don't have an account? Create one",
                     style: TextStyle(color: redColor),

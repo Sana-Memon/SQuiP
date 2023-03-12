@@ -1,11 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:squip/app/app.locator.dart';
+import 'package:squip/app/app.router.dart';
 import 'package:squip/utils/image_constant.dart';
 import 'package:stacked/stacked.dart';
+import 'package:stacked_services/stacked_services.dart';
 
 class RequestAmbulanceViewModel extends BaseViewModel {
   late GoogleMapController mapController;
+  final nav = locator<NavigationService>();
+  final dialogue = locator<DialogService>();
 
+  opendialogue() {
+    dialogue.showDialog(
+        buttonTitle: "Ok",
+        title: "your Request sent to Ambulance, We'll arrive soon");
+    rebuildUi();
+  }
+
+  goToWelcomeUser() {
+    nav.navigateToWelcomeUserView();
+  }
   // NearbyPlacesResponse nearbyPlacesResponse = NearbyPlacesResponse();
 
   addMarker(String customText, LatLng location, Map _marker) async {

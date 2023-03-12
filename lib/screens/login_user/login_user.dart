@@ -86,6 +86,7 @@ class LoginUserView extends StatelessWidget {
                               onPressed: () {
                                 viewModel.SignInUser(loginEmailController,
                                     loginPasswordController, context);
+                                // viewModel.moveToWelcomeUser();
                               },
                             )),
                         Text(
