@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:squip/custom_widgets/app_bar.dart';
 import 'package:squip/custom_widgets/custom_banner.dart';
 import 'package:squip/custom_widgets/custom_button.dart';
 import 'package:squip/screens/main_menu/main_menu_view_model.dart';
@@ -11,57 +12,73 @@ class MainMenuView extends StatelessWidget {
     return ViewModelBuilder<MainMenuViewModel>.reactive(
         viewModelBuilder: () => MainMenuViewModel(),
         builder: (context, viewModel, child) => Scaffold(
-              body: Center(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    customBanner(),
-                    Container(
-                      width: 200,
-                      // width: double.infinity,
-                      child: customButton(
-                          onPress: () {},
-                          text: "User Login",
-                          color: whiteColor,
-                          bgColor: redColor),
-                    ),
-                    SizedBox(
-                      height: 20,
-                    ),
-                    Container(
-                      width: 200,
-                      child: customButton(
-                          onPress: () {},
-                          text: "Fire Brigade",
-                          color: whiteColor,
-                          bgColor: redColor),
-                    ),
-                    SizedBox(
-                      height: 20,
-                    ),
-                    Container(
-                      width: 200,
-                      // width: double.infinity,
-                      child: customButton(
-                          onPress: () {},
-                          text: "Police Login",
-                          color: whiteColor,
-                          bgColor: redColor),
-                    ),
-                    SizedBox(
-                      height: 20,
-                    ),
-                    Container(
-                      width: 200,
-                      // width: double.infinity,
-                      child: customButton(
-                          onPress: () {},
-                          text: "Ambulance Login",
-                          color: whiteColor,
-                          bgColor: redColor),
-                    ),
-                  ],
+              appBar: customerAppBar("Main Menu"),
+              body: SafeArea(
+                child: Center(
+                  child: Column(
+                    children: [
+                      customBanner(),
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Container(
+                              width: 200,
+                              // width: double.infinity,
+                              child: ElevatedButton(
+                                style: ElevatedButton.styleFrom(
+                                  primary: redColor,
+                                  padding: EdgeInsets.all(12),
+                                ),
+                                child: Text(
+                                  "User Login",
+                                  style: TextStyle(
+                                      color: whiteColor,
+                                      backgroundColor: redColor),
+                                ),
+                                onPressed: () {
+                                  viewModel.gotoUser();
+                                },
+                              )),
+                        ],
+                      ),
+                      SizedBox(
+                        height: 20,
+                      ),
+                      Container(
+                        width: 200,
+                        child: customButton(
+                            onTap: () {},
+                            text: "Fire Brigade",
+                            color: whiteColor,
+                            bgColor: redColor),
+                      ),
+                      SizedBox(
+                        height: 20,
+                      ),
+                      Container(
+                        width: 200,
+                        // width: double.infinity,
+                        child: customButton(
+                            onTap: () {},
+                            text: "Police Login",
+                            color: whiteColor,
+                            bgColor: redColor),
+                      ),
+                      SizedBox(
+                        height: 20,
+                      ),
+                      Container(
+                        width: 200,
+                        // width: double.infinity,
+                        child: customButton(
+                            onTap: () {},
+                            text: "Ambulance Login",
+                            color: whiteColor,
+                            bgColor: redColor),
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ));

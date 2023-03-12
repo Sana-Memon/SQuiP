@@ -57,7 +57,7 @@ class LoginPoliceView extends StatelessWidget {
                     width: double.infinity,
                     // width: double.infinity,
                     child: customButton(
-                        onPress: () {},
+                        onTap: () {},
                         text: "Login",
                         color: whiteColor,
                         bgColor: redColor),
@@ -72,7 +72,7 @@ class LoginPoliceView extends StatelessWidget {
                   Container(
                       width: double.infinity,
                       child: customButton(
-                          onPress: () {},
+                          onTap: () {},
                           text: "Sign Up",
                           color: redColor,
                           bgColor: golden)),

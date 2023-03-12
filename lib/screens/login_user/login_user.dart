@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:squip/custom_widgets/app_bar.dart';
 import 'package:squip/custom_widgets/custom_button.dart';
 import 'package:squip/custom_widgets/custom_text_field.dart';
 import 'package:squip/screens/login_user/login_user_view_model.dart';
@@ -7,12 +8,16 @@ import 'package:squip/utils/image_constant.dart';
 import 'package:stacked/stacked.dart';
 
 class LoginUserView extends StatelessWidget {
+  TextEditingController loginEmailController = TextEditingController();
+  TextEditingController loginPasswordController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return ViewModelBuilder<LoginUserViewModel>.reactive(
         viewModelBuilder: () => LoginUserViewModel(),
         builder: (context, viewModel, child) => Scaffold(
-                body: Center(
+            appBar: customerAppBar("User Login"),
+            body: Center(
               child: Column(
                 children: [
                   Padding(padding: EdgeInsets.all(20)),
@@ -40,11 +45,22 @@ class LoginUserView extends StatelessWidget {
                     child: Column(
                       children: [
                         Padding(padding: EdgeInsets.all(10)),
-                        customTextField("Email"),
+                        TextFormField(
+                          controller: loginEmailController,
+                          decoration: InputDecoration(
+                            labelText: "Email",
+                          ),
+                        ),
                         SizedBox(
                           height: 40,
                         ),
-                        customTextField("Password"),
+                        TextFormField(
+                          controller: loginPasswordController,
+                          decoration: InputDecoration(
+                            labelText: "Password",
+                          ),
+                          obscureText: true,
+                        ),
                         Align(
                           alignment: Alignment.centerRight,
                           child: TextButton(
@@ -54,14 +70,24 @@ class LoginUserView extends StatelessWidget {
                           height: 40,
                         ),
                         Container(
-                          width: double.infinity,
-                          // width: double.infinity,
-                          child: customButton(
-                              onPress: () {},
-                              text: "Login",
-                              color: whiteColor,
-                              bgColor: redColor),
-                        ),
+                            width: double.infinity,
+                            // width: double.infinity,
+                            child: ElevatedButton(
+                              style: ElevatedButton.styleFrom(
+                                primary: redColor,
+                                padding: EdgeInsets.all(12),
+                              ),
+                              child: Text(
+                                "Login",
+                                style: TextStyle(
+                                    color: whiteColor,
+                                    backgroundColor: redColor),
+                              ),
+                              onPressed: () {
+                                viewModel.SignInUser(loginEmailController,
+                                    loginPasswordController, context);
+                              },
+                            )),
                         Text(
                           "Don't have an account? Create one",
                           style: TextStyle(color: redColor),
@@ -69,13 +95,13 @@ class LoginUserView extends StatelessWidget {
                         SizedBox(
                           height: 20,
                         ),
-                        Container(
-                            width: double.infinity,
-                            child: customButton(
-                                onPress: () {},
-                                text: "Sign Up",
-                                color: redColor,
-                                bgColor: golden)),
+                        // Container(
+                        //     width: double.infinity,
+                        //     child: customButton(
+                        //         onTap: () {},
+                        //         text: "Sign Up",
+                        //         color: redColor,
+                        //         bgColor: golden)),
                         SizedBox(height: 10),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,

@@ -6,7 +6,11 @@ import 'package:squip/utils/color_constant.dart';
 import 'package:stacked/stacked.dart';
 
 class RequestEmergencyView extends StatelessWidget {
-  // final LatLng currentPosition = LatLng(25.1193, 55.3773);
+  final LatLng currentPosition = LatLng(24.9141, 67.0583);
+  final LatLng nearPoliceStation1 = LatLng(24.915684116, 67.063230648);
+  final LatLng nearPoliceStation2 = LatLng(24.9011, 67.0458);
+  final LatLng nearPoliceStation3 = LatLng(24.9155, 67.0194);
+
   // late GoogleMapController mapController;
   Map<String, Marker> _marker = {};
   @override
@@ -16,18 +20,25 @@ class RequestEmergencyView extends StatelessWidget {
       builder: (context, viewModel, child) => Scaffold(
         body: GoogleMap(
           initialCameraPosition:
-              CameraPosition(target: viewModel.currentPosition, zoom: 14),
+              CameraPosition(target: currentPosition, zoom: 14),
           onMapCreated: (controller) {
             viewModel.mapController = controller;
-            viewModel.addMarker('test', viewModel.currentPosition, _marker);
+            viewModel.addMarker(
+                'My current Location', currentPosition, _marker);
+            viewModel.addMarkerPolice(
+                "Nearest police station", nearPoliceStation1, _marker);
           },
           markers: _marker.values.toSet(),
         ),
         floatingActionButton: FloatingActionButton.extended(
           onPressed: () async {
-            viewModel.takingCurrentLocation(_marker);
+            viewModel.gotoActiveServices();
+            AlertDialog(
+              title: Text('Cancel booking'),
+              content: Text('Are you sure want to cancel booking?'),
+            );
           },
-          label: const Text("Current Location"),
+          label: const Text("Request Police"),
           icon: const Icon(Icons.location_history),
         ),
       ),

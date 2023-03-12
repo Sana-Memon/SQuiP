@@ -20,8 +20,8 @@ class WelcomeUserView extends StatelessWidget {
                 backgroundColor: whiteColor,
                 items: [
                   BottomNavigationBarItem(
-                      icon: Icon(Icons.request_page),
-                      label: "Request Emergency"),
+                      icon: Icon(Icons.access_alarm),
+                      label: "Choose Emergency"),
                   BottomNavigationBarItem(
                       icon: Icon(Icons.emergency), label: "Active Services"),
                   BottomNavigationBarItem(

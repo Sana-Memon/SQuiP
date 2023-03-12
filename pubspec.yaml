@@ -41,6 +41,11 @@ dependencies:
   velocity_x: ^3.6.0
   google_maps_flutter: ^2.2.5
   geolocator: ^9.0.2
+  http: ^0.13.5
+  stacked_services: ^1.0.0
+  stacked_generator: ^1.0.0
+  firebase_auth: ^4.2.10
+  firebase_core: ^2.7.1
 
 dev_dependencies:
   flutter_test:
@@ -52,6 +57,7 @@ dev_dependencies:
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
   flutter_lints: ^2.0.0
+  build_runner: ^2.3.3
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

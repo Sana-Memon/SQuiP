@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:squip/utils/image_constant.dart';
 
 Widget appLogo() {
   return Center(
       child: Image.asset(
-    "assets/icons/app_logo.png",
+    logo,
     height: 100,
     width: 100,
   ));
