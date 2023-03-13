@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:squip/app/app.locator.dart';
@@ -16,6 +17,13 @@ class RequestAmbulanceViewModel extends BaseViewModel {
         buttonTitle: "Ok",
         title: "your Request sent to Ambulance, We'll arrive soon");
     rebuildUi();
+  }
+
+  insertRequestAmbulance() async {
+    CollectionReference ref =
+        FirebaseFirestore.instance.collection("emeregencyRequest");
+    await ref.add({"name": "test", "emergency": "Ambulance"});
+    print("Police request inserted");
   }
 
   goToWelcomeUser() {

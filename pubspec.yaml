@@ -46,6 +46,8 @@ dependencies:
   stacked_generator: ^1.0.0
   firebase_auth: ^4.2.10
   firebase_core: ^2.7.1
+  cloud_firestore: ^4.4.4
+  url_launcher: ^6.1.10
 
 dev_dependencies:
   flutter_test:

@@ -29,8 +29,12 @@ class RequestAmbulanceView extends StatelessWidget {
         floatingActionButton: FloatingActionButton.extended(
           onPressed: () {
             print("clicking");
+
             viewModel.goToWelcomeUser();
             viewModel.opendialogue();
+
+            viewModel.insertRequestAmbulance();
+            print("method calling ambulance request inserted done");
           },
           label: const Text("Request Ambulance"),
           icon: const Icon(Icons.location_history),

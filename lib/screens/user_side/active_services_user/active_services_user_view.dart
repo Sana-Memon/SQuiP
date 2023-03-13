@@ -13,41 +13,25 @@ class ActiveServiceView extends StatelessWidget {
         viewModelBuilder: () => ActiveServiceViewModel(),
         builder: (context, viewModel, child) => Scaffold(
               appBar: customerAppBar("Active Services"),
-              body: Column(
-                children: [
-                  profileListTile(
-                      "Police Service", Icons.notifications_active_outlined),
-                  profileListTile(
-                      "Police Service", Icons.notifications_active_outlined),
-                  profileListTile(
-                      "Ambulance Service", Icons.notifications_active_outlined),
-                  profileListTile(
-                      "Ambulance Service", Icons.notifications_active_outlined),
-                  profileListTile("Fire Brigade Service",
-                      Icons.notifications_active_outlined),
-                  profileListTile("Fire Brigade Service",
-                      Icons.notifications_active_outlined),
-                ],
+              body: FutureBuilder(
+                future: viewModel.getActiveRequest(),
+                builder: ((context, AsyncSnapshot snapshot) {
+                  if (snapshot.hasData) {
+                    return ListView.builder(
+                      itemCount: snapshot.data.docs.length,
+                      itemBuilder: (context, index) {
+                        return ListTile(
+                          title: Text(snapshot.data.docs[index]["emergency"]),
+                          trailing: IconButton(
+                              onPressed: () {}, icon: Icon(Icons.add_circle)),
+                        );
+                      },
+                    );
+                  } else {
+                    return Center(child: CircularProgressIndicator());
+                  }
+                }),
               ),
-              // bottomNavigationBar: BottomNavigationBar(
-              //   selectedItemColor: redColor,
-              //   selectedLabelStyle: TextStyle(fontWeight: FontWeight.bold),
-              //   type: BottomNavigationBarType.fixed,
-              //   backgroundColor: whiteColor,
-              //   items: [
-              //     BottomNavigationBarItem(
-              //         icon: Icon(Icons.access_alarm),
-              //         label: "Choose Emergency"),
-              //     BottomNavigationBarItem(
-              //         icon: Icon(Icons.emergency), label: "Active Services"),
-              //     BottomNavigationBarItem(
-              //         icon: Icon(Icons.man), label: "User Profile"),
-              //   ],
-              //   onTap: ((index) {
-              //     viewModel.onselectItem(index);
-              //   }),
-              //   currentIndex: viewModel.myIndex,
-              // ),
             ));
   }
 }

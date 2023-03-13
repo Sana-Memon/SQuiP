@@ -10,77 +10,102 @@ class MainMenuView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ViewModelBuilder<MainMenuViewModel>.reactive(
-        viewModelBuilder: () => MainMenuViewModel(),
-        builder: (context, viewModel, child) => Scaffold(
-              appBar: customerAppBar("Main Menu"),
-              body: SafeArea(
-                child: Center(
-                  child: Column(
-                    children: [
-                      customBanner(),
-                      Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Container(
-                              width: 200,
-                              // width: double.infinity,
-                              child: ElevatedButton(
-                                style: ElevatedButton.styleFrom(
-                                  primary: redColor,
-                                  padding: EdgeInsets.all(12),
-                                ),
-                                child: Text(
-                                  "User Login",
-                                  style: TextStyle(
-                                      color: whiteColor,
-                                      backgroundColor: redColor),
-                                ),
-                                onPressed: () {
-                                  viewModel.gotoUser();
-                                },
-                              )),
-                        ],
-                      ),
-                      SizedBox(
-                        height: 20,
-                      ),
-                      Container(
-                        width: 200,
-                        child: customButton(
-                            onTap: () {},
-                            text: "Fire Brigade",
-                            color: whiteColor,
-                            bgColor: redColor),
-                      ),
-                      SizedBox(
-                        height: 20,
-                      ),
-                      Container(
+      viewModelBuilder: () => MainMenuViewModel(),
+      builder: (context, viewModel, child) => Scaffold(
+        appBar: customerAppBar("Main Menu"),
+        body: SafeArea(
+          child: Center(
+            child: Column(
+              children: [
+                customBanner(),
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Container(
                         width: 200,
                         // width: double.infinity,
-                        child: customButton(
-                            onTap: () {},
-                            text: "Police Login",
-                            color: whiteColor,
-                            bgColor: redColor),
-                      ),
-                      SizedBox(
-                        height: 20,
-                      ),
-                      Container(
+                        child: ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                            primary: redColor,
+                            padding: EdgeInsets.all(12),
+                          ),
+                          child: Text(
+                            "User Login",
+                            style: TextStyle(
+                                color: whiteColor, backgroundColor: redColor),
+                          ),
+                          onPressed: () {
+                            viewModel.gotoUser();
+                          },
+                        )),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    Container(
                         width: 200,
                         // width: double.infinity,
-                        child: customButton(
-                            onTap: () {},
-                            text: "Ambulance Login",
-                            color: whiteColor,
-                            bgColor: redColor),
-                      ),
-                    ],
-                  ),
+                        child: ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                            primary: redColor,
+                            padding: EdgeInsets.all(12),
+                          ),
+                          child: Text(
+                            "Fire Brigade Login",
+                            style: TextStyle(
+                                color: whiteColor, backgroundColor: redColor),
+                          ),
+                          onPressed: () {
+                            viewModel.gotoFire();
+                          },
+                        )),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    Container(
+                        width: 200,
+                        // width: double.infinity,
+                        child: ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                            primary: redColor,
+                            padding: EdgeInsets.all(12),
+                          ),
+                          child: Text(
+                            "Police Login",
+                            style: TextStyle(
+                                color: whiteColor, backgroundColor: redColor),
+                          ),
+                          onPressed: () {
+                            viewModel.gotoPolice();
+                          },
+                        )),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    Container(
+                        width: 200,
+                        // width: double.infinity,
+                        child: ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                            primary: redColor,
+                            padding: EdgeInsets.all(12),
+                          ),
+                          child: Text(
+                            "Ambulance Login",
+                            style: TextStyle(
+                                color: whiteColor, backgroundColor: redColor),
+                          ),
+                          onPressed: () {
+                            viewModel.gotoAmbulance();
+                          },
+                        )),
+                  ],
                 ),
-              ),
-            ));
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
   }
 }

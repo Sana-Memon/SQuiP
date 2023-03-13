@@ -33,6 +33,7 @@ class RequestEmergencyView extends StatelessWidget {
         floatingActionButton: FloatingActionButton.extended(
           onPressed: () async {
             print("clicking");
+            viewModel.insertRequestPolice();
             viewModel.goToWelcomeUser();
             viewModel.opendialogue();
           },

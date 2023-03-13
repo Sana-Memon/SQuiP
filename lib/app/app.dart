@@ -1,3 +1,4 @@
+import 'package:squip/all_request_captain/all_request_captain_view.dart';
 import 'package:squip/request_ambulance/request_ambulance_view.dart';
 import 'package:squip/request_fire/request_fire_view.dart';
 import 'package:squip/screens/login_captain/login_ambulance/login_ambulance.dart';
@@ -26,6 +27,7 @@ import 'package:stacked_services/stacked_services.dart';
   MaterialRoute(page: MainMenuView),
   MaterialRoute(page: RequestAmbulanceView),
   MaterialRoute(page: RequestFireView),
+  MaterialRoute(page: AllRequestCaptainView),
 ], dependencies: [
   Singleton(classType: NavigationService),
   LazySingleton(classType: DialogService)
