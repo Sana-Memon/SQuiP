@@ -7,8 +7,8 @@ import 'package:stacked_services/stacked_services.dart';
 class LoginPoliceViewModel extends BaseViewModel {
   final nav = locator<NavigationService>();
 
-  moveToWelcomeUser() {
-    nav.navigateToWelcomeUserView();
+  moveToAllRequestPolice() {
+    nav.navigateToAllRequestCaptainView();
     rebuildUi();
   }
 
@@ -17,7 +17,7 @@ class LoginPoliceViewModel extends BaseViewModel {
       final credential = await FirebaseAuth.instance.signInWithEmailAndPassword(
           email: loginEmailController.text,
           password: loginPasswordController.text);
-      moveToWelcomeUser();
+      moveToAllRequestPolice();
       print("login Successful");
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {

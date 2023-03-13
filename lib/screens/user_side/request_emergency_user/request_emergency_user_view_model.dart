@@ -8,6 +8,7 @@ import 'package:squip/app/app.router.dart';
 import 'package:squip/utils/image_constant.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class RequestEmergencyViewModel extends BaseViewModel {
   final LatLng currentPosition = LatLng(25.1193, 55.3773);
@@ -35,6 +36,15 @@ class RequestEmergencyViewModel extends BaseViewModel {
     CollectionReference ref =
         FirebaseFirestore.instance.collection("emeregencyRequest");
     await ref.add({"name": "test", "emergency": "police"});
+  }
+
+  makingPhoneCall() async {
+    var url = Uri.parse("tel:2345678");
+    if (await canLaunchUrl(url)) {
+      await launchUrl(url);
+    } else {
+      throw 'Could not launch $url';
+    }
   }
 
   goToWelcomeUser() {

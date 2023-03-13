@@ -14,32 +14,42 @@ class RequestAmbulanceView extends StatelessWidget {
     return ViewModelBuilder<RequestAmbulanceViewModel>.reactive(
       viewModelBuilder: () => RequestAmbulanceViewModel(),
       builder: (context, viewModel, child) => Scaffold(
-        body: GoogleMap(
-          initialCameraPosition:
-              CameraPosition(target: currentPosition, zoom: 14),
-          onMapCreated: (controller) {
-            viewModel.mapController = controller;
-            viewModel.addMarker(
-                'My current Location', currentPosition, _marker);
-            viewModel.addMarkerFire(
-                "Nearest Fire station", nearAmbulance, _marker);
-          },
-          markers: _marker.values.toSet(),
-        ),
-        floatingActionButton: FloatingActionButton.extended(
-          onPressed: () {
-            print("clicking");
-
-            viewModel.goToWelcomeUser();
-            viewModel.opendialogue();
-
-            viewModel.insertRequestAmbulance();
-            print("method calling ambulance request inserted done");
-          },
-          label: const Text("Request Ambulance"),
-          icon: const Icon(Icons.location_history),
-        ),
-      ),
+          body: GoogleMap(
+            initialCameraPosition:
+                CameraPosition(target: currentPosition, zoom: 14),
+            onMapCreated: (controller) {
+              viewModel.mapController = controller;
+              viewModel.addMarker(
+                  'My current Location', currentPosition, _marker);
+              viewModel.addMarkerFire(
+                  "Nearest Fire station", nearAmbulance, _marker);
+            },
+            markers: _marker.values.toSet(),
+          ),
+          floatingActionButton: Row(
+            children: [
+              FloatingActionButton.extended(
+                heroTag: "btn1",
+                onPressed: () {
+                  print("clicking");
+                  viewModel.insertRequestAmbulance();
+                  viewModel.goToWelcomeUser();
+                  viewModel.opendialogue();
+                },
+                label: const Text("Request"),
+                icon: const Icon(Icons.location_history),
+              ),
+              FloatingActionButton.extended(
+                heroTag: "btn2",
+                onPressed: () {
+                  print("calling");
+                  viewModel.makingPhoneCall();
+                },
+                label: const Text("Call"),
+                icon: const Icon(Icons.location_history),
+              ),
+            ],
+          )),
     );
   }
 }

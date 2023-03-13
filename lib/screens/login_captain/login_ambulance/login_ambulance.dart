@@ -82,7 +82,7 @@ class LoginAmbulanceView extends StatelessWidget {
                         onPressed: () {
                           viewModel.SignInUser(loginEmailController,
                               loginPasswordController, context);
-                          // viewModel.moveToWelcomeUser();
+                          viewModel.moveToAmbulanceRequest();
                         },
                       )),
                   Text(

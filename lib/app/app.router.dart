@@ -5,10 +5,14 @@
 // **************************************************************************
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'package:flutter/material.dart' as _i15;
+import 'package:flutter/material.dart' as _i17;
 import 'package:flutter/material.dart';
 import 'package:squip/all_request_captain/all_request_captain_view.dart'
     as _i14;
+import 'package:squip/ambulance_request_captain/ambulance_request_captain_view.dart'
+    as _i16;
+import 'package:squip/fire_request_captain/fire_request_captain_view.dart'
+    as _i15;
 import 'package:squip/request_ambulance/request_ambulance_view.dart' as _i12;
 import 'package:squip/request_fire/request_fire_view.dart' as _i13;
 import 'package:squip/screens/login_captain/login_ambulance/login_ambulance.dart'
@@ -29,7 +33,7 @@ import 'package:squip/screens/user_side/user_profile/user_profile_view.dart'
 import 'package:squip/screens/user_side/welcome_user/welcome_user_view.dart'
     as _i10;
 import 'package:stacked/stacked.dart' as _i1;
-import 'package:stacked_services/stacked_services.dart' as _i16;
+import 'package:stacked_services/stacked_services.dart' as _i18;
 
 class Routes {
   static const splashScreenView = '/';
@@ -58,6 +62,10 @@ class Routes {
 
   static const allRequestCaptainView = '/all-request-captain-view';
 
+  static const fireRequestCaptainView = '/fire-request-captain-view';
+
+  static const ambulanceRequestCaptainView = '/ambulance-request-captain-view';
+
   static const all = <String>{
     splashScreenView,
     loginUserView,
@@ -72,6 +80,8 @@ class Routes {
     requestAmbulanceView,
     requestFireView,
     allRequestCaptainView,
+    fireRequestCaptainView,
+    ambulanceRequestCaptainView,
   };
 }
 
@@ -129,96 +139,118 @@ class StackedRouter extends _i1.RouterBase {
       Routes.allRequestCaptainView,
       page: _i14.AllRequestCaptainView,
     ),
+    _i1.RouteDef(
+      Routes.fireRequestCaptainView,
+      page: _i15.FireRequestCaptainView,
+    ),
+    _i1.RouteDef(
+      Routes.ambulanceRequestCaptainView,
+      page: _i16.AmbulanceRequestCaptainView,
+    ),
   ];
 
   final _pagesMap = <Type, _i1.StackedRouteFactory>{
     _i2.SplashScreenView: (data) {
-      return _i15.MaterialPageRoute<dynamic>(
+      return _i17.MaterialPageRoute<dynamic>(
         builder: (context) => _i2.SplashScreenView(),
         settings: data,
         maintainState: false,
       );
     },
     _i3.LoginUserView: (data) {
-      return _i15.MaterialPageRoute<dynamic>(
+      return _i17.MaterialPageRoute<dynamic>(
         builder: (context) => _i3.LoginUserView(),
         settings: data,
         maintainState: false,
       );
     },
     _i4.LoginAmbulanceView: (data) {
-      return _i15.MaterialPageRoute<dynamic>(
+      return _i17.MaterialPageRoute<dynamic>(
         builder: (context) => _i4.LoginAmbulanceView(),
         settings: data,
         maintainState: false,
       );
     },
     _i5.LoginPoliceView: (data) {
-      return _i15.MaterialPageRoute<dynamic>(
+      return _i17.MaterialPageRoute<dynamic>(
         builder: (context) => _i5.LoginPoliceView(),
         settings: data,
         maintainState: false,
       );
     },
     _i6.LoginFireBrigadeView: (data) {
-      return _i15.MaterialPageRoute<dynamic>(
+      return _i17.MaterialPageRoute<dynamic>(
         builder: (context) => _i6.LoginFireBrigadeView(),
         settings: data,
         maintainState: false,
       );
     },
     _i7.ActiveServiceView: (data) {
-      return _i15.MaterialPageRoute<dynamic>(
+      return _i17.MaterialPageRoute<dynamic>(
         builder: (context) => _i7.ActiveServiceView(),
         settings: data,
         maintainState: false,
       );
     },
     _i8.RequestEmergencyView: (data) {
-      return _i15.MaterialPageRoute<dynamic>(
+      return _i17.MaterialPageRoute<dynamic>(
         builder: (context) => _i8.RequestEmergencyView(),
         settings: data,
         maintainState: false,
       );
     },
     _i9.UserProfileView: (data) {
-      return _i15.MaterialPageRoute<dynamic>(
+      return _i17.MaterialPageRoute<dynamic>(
         builder: (context) => _i9.UserProfileView(),
         settings: data,
         maintainState: false,
       );
     },
     _i10.WelcomeUserView: (data) {
-      return _i15.MaterialPageRoute<dynamic>(
+      return _i17.MaterialPageRoute<dynamic>(
         builder: (context) => _i10.WelcomeUserView(),
         settings: data,
         maintainState: false,
       );
     },
     _i11.MainMenuView: (data) {
-      return _i15.MaterialPageRoute<dynamic>(
+      return _i17.MaterialPageRoute<dynamic>(
         builder: (context) => _i11.MainMenuView(),
         settings: data,
         maintainState: false,
       );
     },
     _i12.RequestAmbulanceView: (data) {
-      return _i15.MaterialPageRoute<dynamic>(
+      return _i17.MaterialPageRoute<dynamic>(
         builder: (context) => _i12.RequestAmbulanceView(),
         settings: data,
         maintainState: false,
       );
     },
     _i13.RequestFireView: (data) {
-      return _i15.MaterialPageRoute<dynamic>(
+      return _i17.MaterialPageRoute<dynamic>(
         builder: (context) => _i13.RequestFireView(),
         settings: data,
         maintainState: false,
       );
     },
     _i14.AllRequestCaptainView: (data) {
-      return _i15.MaterialPageRoute<dynamic>(
+      return _i17.MaterialPageRoute<dynamic>(
         builder: (context) => _i14.AllRequestCaptainView(),
+        settings: data,
+        maintainState: false,
+      );
+    },
+    _i15.FireRequestCaptainView: (data) {
+      return _i17.MaterialPageRoute<dynamic>(
+        builder: (context) => _i15.FireRequestCaptainView(),
+        settings: data,
+        maintainState: false,
+      );
+    },
+    _i16.AmbulanceRequestCaptainView: (data) {
+      return _i17.MaterialPageRoute<dynamic>(
+        builder: (context) => _i16.AmbulanceRequestCaptainView(),
         settings: data,
         maintainState: false,
       );
@@ -231,7 +263,7 @@ class StackedRouter extends _i1.RouterBase {
   Map<Type, _i1.StackedRouteFactory> get pagesMap => _pagesMap;
 }
 
-extension NavigatorStateExtension on _i16.NavigationService {
+extension NavigatorStateExtension on _i18.NavigationService {
   Future<dynamic> navigateToSplashScreenView([
     int? routerId,
     bool preventDuplicates = true,
@@ -414,6 +446,34 @@ extension NavigatorStateExtension on _i16.NavigationService {
         transition: transition);
   }
 
+  Future<dynamic> navigateToFireRequestCaptainView([
+    int? routerId,
+    bool preventDuplicates = true,
+    Map<String, String>? parameters,
+    Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
+        transition,
+  ]) async {
+    return navigateTo<dynamic>(Routes.fireRequestCaptainView,
+        id: routerId,
+        preventDuplicates: preventDuplicates,
+        parameters: parameters,
+        transition: transition);
+  }
+
+  Future<dynamic> navigateToAmbulanceRequestCaptainView([
+    int? routerId,
+    bool preventDuplicates = true,
+    Map<String, String>? parameters,
+    Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
+        transition,
+  ]) async {
+    return navigateTo<dynamic>(Routes.ambulanceRequestCaptainView,
+        id: routerId,
+        preventDuplicates: preventDuplicates,
+        parameters: parameters,
+        transition: transition);
+  }
+
   Future<dynamic> replaceWithSplashScreenView([
     int? routerId,
     bool preventDuplicates = true,
@@ -590,6 +650,34 @@ extension NavigatorStateExtension on _i16.NavigationService {
         transition,
   ]) async {
     return replaceWith<dynamic>(Routes.allRequestCaptainView,
+        id: routerId,
+        preventDuplicates: preventDuplicates,
+        parameters: parameters,
+        transition: transition);
+  }
+
+  Future<dynamic> replaceWithFireRequestCaptainView([
+    int? routerId,
+    bool preventDuplicates = true,
+    Map<String, String>? parameters,
+    Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
+        transition,
+  ]) async {
+    return replaceWith<dynamic>(Routes.fireRequestCaptainView,
+        id: routerId,
+        preventDuplicates: preventDuplicates,
+        parameters: parameters,
+        transition: transition);
+  }
+
+  Future<dynamic> replaceWithAmbulanceRequestCaptainView([
+    int? routerId,
+    bool preventDuplicates = true,
+    Map<String, String>? parameters,
+    Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
+        transition,
+  ]) async {
+    return replaceWith<dynamic>(Routes.ambulanceRequestCaptainView,
         id: routerId,
         preventDuplicates: preventDuplicates,
         parameters: parameters,

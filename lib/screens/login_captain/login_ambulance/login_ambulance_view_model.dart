@@ -7,8 +7,8 @@ import 'package:stacked_services/stacked_services.dart';
 class LoginAmbulanceViewModel extends BaseViewModel {
   final nav = locator<NavigationService>();
 
-  moveToWelcomeUser() {
-    nav.navigateToWelcomeUserView();
+  moveToAmbulanceRequest() {
+    nav.navigateToAmbulanceRequestCaptainView();
     rebuildUi();
   }
 
@@ -17,7 +17,7 @@ class LoginAmbulanceViewModel extends BaseViewModel {
       final credential = await FirebaseAuth.instance.signInWithEmailAndPassword(
           email: loginEmailController.text,
           password: loginPasswordController.text);
-      moveToWelcomeUser();
+      moveToAmbulanceRequest();
       print("login Successful");
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {

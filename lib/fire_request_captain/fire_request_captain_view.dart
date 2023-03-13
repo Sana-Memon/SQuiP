@@ -1,18 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:squip/ambulance_request_captain/ambulance_request_captain_view_model.dart';
+import 'package:squip/fire_request_captain/fire_request_captain_view_model.dart';
 import 'package:squip/all_request_captain/all_request_captain_view_model.dart';
 import 'package:squip/custom_widgets/app_bar.dart';
 import 'package:squip/custom_widgets/profile_list_tile.dart';
 import 'package:squip/utils/color_constant.dart';
 import 'package:stacked/stacked.dart';
 
-class AllRequestCaptainView extends StatelessWidget {
+class FireRequestCaptainView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return ViewModelBuilder<AllRequestCaptainViewModel>.reactive(
+    return ViewModelBuilder<FireRequestCaptainViewModel>.reactive(
         onViewModelReady: (viewModel) {
           viewModel.getRequests();
         },
-        viewModelBuilder: () => AllRequestCaptainViewModel(),
+        viewModelBuilder: () => FireRequestCaptainViewModel(),
         builder: (context, viewModel, child) => Scaffold(
               appBar: customerAppBar("All Requests"),
               body: FutureBuilder(
