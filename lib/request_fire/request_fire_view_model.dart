@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:squip/app/app.locator.dart';
 import 'package:squip/app/app.router.dart';
+import 'package:squip/services/takingLoggedInUserName.dart';
 import 'package:squip/utils/image_constant.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
@@ -13,6 +14,7 @@ class RequestFireViewModel extends BaseViewModel {
   late GoogleMapController mapController;
   final nav = locator<NavigationService>();
   final dialogue = locator<DialogService>();
+  final user = locator<takingLoggedInUserNameService>();
 
   opendialogue() {
     dialogue.showDialog(
@@ -33,7 +35,7 @@ class RequestFireViewModel extends BaseViewModel {
   insertRequestFire() async {
     CollectionReference ref =
         FirebaseFirestore.instance.collection("emeregencyRequest");
-    await ref.add({"name": "test", "emergency": "Fire Brigade"});
+    await ref.add({"name": user.name, "emergency": "Fire Brigade"});
   }
 
   goToWelcomeUser() {

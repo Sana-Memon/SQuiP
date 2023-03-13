@@ -5,6 +5,7 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:http/http.dart' as http;
 import 'package:squip/app/app.locator.dart';
 import 'package:squip/app/app.router.dart';
+import 'package:squip/services/takingLoggedInUserName.dart';
 import 'package:squip/utils/image_constant.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
@@ -20,10 +21,13 @@ class RequestEmergencyViewModel extends BaseViewModel {
   final dialogue = locator<DialogService>();
 
   final nav = locator<NavigationService>();
-
+  final user = locator<takingLoggedInUserNameService>();
   // gotoActiveServices() {
   //   nav.navigateToActiveServiceView();
   // }
+  grabbingLoggedinUserName() {
+    user.userName();
+  }
 
   opendialogue() {
     dialogue.showDialog(
@@ -35,7 +39,7 @@ class RequestEmergencyViewModel extends BaseViewModel {
   insertRequestPolice() async {
     CollectionReference ref =
         FirebaseFirestore.instance.collection("emeregencyRequest");
-    await ref.add({"name": "test", "emergency": "police"});
+    await ref.add({"name": user.name, "emergency": "police"});
   }
 
   makingPhoneCall() async {

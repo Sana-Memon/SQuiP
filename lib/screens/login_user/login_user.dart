@@ -8,9 +8,6 @@ import 'package:squip/utils/image_constant.dart';
 import 'package:stacked/stacked.dart';
 
 class LoginUserView extends StatelessWidget {
-  TextEditingController loginEmailController = TextEditingController();
-  TextEditingController loginPasswordController = TextEditingController();
-
   @override
   Widget build(BuildContext context) {
     return ViewModelBuilder<LoginUserViewModel>.reactive(
@@ -46,7 +43,7 @@ class LoginUserView extends StatelessWidget {
                       children: [
                         Padding(padding: EdgeInsets.all(10)),
                         TextFormField(
-                          controller: loginEmailController,
+                          controller: viewModel.takingName.loginEmailController,
                           decoration: InputDecoration(
                             labelText: "Email",
                           ),
@@ -55,7 +52,8 @@ class LoginUserView extends StatelessWidget {
                           height: 40,
                         ),
                         TextFormField(
-                          controller: loginPasswordController,
+                          controller:
+                              viewModel.takingName.loginPasswordController,
                           decoration: InputDecoration(
                             labelText: "Password",
                           ),
@@ -84,8 +82,13 @@ class LoginUserView extends StatelessWidget {
                                     backgroundColor: redColor),
                               ),
                               onPressed: () {
-                                viewModel.SignInUser(loginEmailController,
-                                    loginPasswordController, context);
+                                viewModel.SignInUser(
+                                    viewModel.takingName.loginEmailController,
+                                    viewModel
+                                        .takingName.loginPasswordController,
+                                    context);
+                                viewModel.grabbingUserName();
+                                print(viewModel.takingName.name);
                                 // viewModel.moveToWelcomeUser();
                               },
                             )),

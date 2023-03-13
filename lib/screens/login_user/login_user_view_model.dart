@@ -1,11 +1,18 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:squip/app/app.locator.dart';
 import 'package:squip/app/app.router.dart';
+import 'package:squip/services/takingLoggedInUserName.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
 
 class LoginUserViewModel extends BaseViewModel {
   final nav = locator<NavigationService>();
+  final takingName = locator<takingLoggedInUserNameService>();
+
+  grabbingUserName() {
+    takingName.userName();
+  }
 
   moveToWelcomeUser() {
     nav.navigateToWelcomeUserView();
