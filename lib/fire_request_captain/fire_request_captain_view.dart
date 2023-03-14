@@ -27,9 +27,9 @@ class FireRequestCaptainView extends StatelessWidget {
                         return ListTile(
                           title: Text(snapshot.data.docs[index]["emergency"]),
                           subtitle: Text(snapshot.data.docs[index]["name"]),
-                          trailing: IconButton(
-                            onPressed: () {},
-                            icon: Icon(Icons.add_circle),
+                          trailing: Text(
+                            ((snapshot.data.docs[index]["date"]).toString()),
+                            style: TextStyle(fontSize: 14),
                           ),
                         );
                       },

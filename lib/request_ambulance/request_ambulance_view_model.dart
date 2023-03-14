@@ -34,8 +34,12 @@ class RequestAmbulanceViewModel extends BaseViewModel {
   insertRequestAmbulance() async {
     CollectionReference ref =
         FirebaseFirestore.instance.collection("emeregencyRequest");
-    await ref.add({"name": user.name, "emergency": "Ambulance"});
-    print("Police request inserted");
+    await ref.add({
+      "name": user.name,
+      "emergency": "Ambulance",
+      "date": DateTime.now().toString()
+    });
+    print("Ambulance request inserted");
   }
 
   goToWelcomeUser() {

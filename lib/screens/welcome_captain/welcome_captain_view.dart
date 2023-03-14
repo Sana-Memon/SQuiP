@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:squip/screens/user_side/welcome_user/welcome_user_view_model.dart';
-import 'package:squip/screens/welcome_captain/welcome_user_view_model.dart';
+import 'package:squip/screens/welcome_captain/welcome_captain_view_model.dart';
 import 'package:squip/utils/color_constant.dart';
 import 'package:squip/utils/image_constant.dart';
 import 'package:stacked/stacked.dart';

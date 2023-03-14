@@ -42,7 +42,7 @@ class UserProfileView extends StatelessWidget {
                                         style: TextStyle(
                                             fontWeight: FontWeight.bold),
                                       ),
-                                      Text("sanaamemon567@gmail.com")
+                                      Text(viewModel.nav.name)
                                     ],
                                   ),
                                   SizedBox(

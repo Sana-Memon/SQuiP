@@ -26,9 +26,9 @@ class AmbulanceRequestCaptainView extends StatelessWidget {
                         return ListTile(
                           title: Text(snapshot.data.docs[index]["emergency"]),
                           subtitle: Text(snapshot.data.docs[index]["name"]),
-                          trailing: IconButton(
-                            onPressed: () {},
-                            icon: Icon(Icons.add_circle),
+                          trailing: Text(
+                            ((snapshot.data.docs[index]["date"]).toString()),
+                            style: TextStyle(fontSize: 14),
                           ),
                         );
                       },
@@ -38,22 +38,13 @@ class AmbulanceRequestCaptainView extends StatelessWidget {
                   }
                 }),
               ),
-              // body: Column(
-              //   children: [
-              //     profileListTile(
-              //         "Police Service", Icons.notifications_active_outlined),
-              //     profileListTile(
-              //         "Police Service", Icons.notifications_active_outlined),
-              //     profileListTile(
-              //         "Ambulance Service", Icons.notifications_active_outlined),
-              //     profileListTile(
-              //         "Ambulance Service", Icons.notifications_active_outlined),
-              //     profileListTile("Fire Brigade Service",
-              //         Icons.notifications_active_outlined),
-              //     profileListTile("Fire Brigade Service",
-              //         Icons.notifications_active_outlined),
-              //   ],
-              // ),
+              floatingActionButton: FloatingActionButton.extended(
+                onPressed: () {
+                  viewModel.logout();
+                },
+                label: Text("Logout"),
+                backgroundColor: redColor,
+              ),
             ));
   }
 }

@@ -35,7 +35,11 @@ class RequestFireViewModel extends BaseViewModel {
   insertRequestFire() async {
     CollectionReference ref =
         FirebaseFirestore.instance.collection("emeregencyRequest");
-    await ref.add({"name": user.name, "emergency": "Fire Brigade"});
+    await ref.add({
+      "name": user.name,
+      "emergency": "Fire Brigade",
+      "date": DateTime.now().toString()
+    });
   }
 
   goToWelcomeUser() {

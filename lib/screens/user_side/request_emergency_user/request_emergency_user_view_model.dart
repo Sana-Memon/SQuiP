@@ -39,7 +39,11 @@ class RequestEmergencyViewModel extends BaseViewModel {
   insertRequestPolice() async {
     CollectionReference ref =
         FirebaseFirestore.instance.collection("emeregencyRequest");
-    await ref.add({"name": user.name, "emergency": "police"});
+    await ref.add({
+      "name": user.name,
+      "emergency": "police",
+      "date": DateTime.now().toString()
+    });
   }
 
   makingPhoneCall() async {

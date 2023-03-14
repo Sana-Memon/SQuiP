@@ -32,6 +32,14 @@ class WelcomeUserView extends StatelessWidget {
                 }),
                 currentIndex: viewModel.myIndex,
               ),
+              floatingActionButton: FloatingActionButton.extended(
+                onPressed: () {
+                  viewModel.logout();
+                },
+                label: Text("Sign out"),
+                focusColor: redColor,
+                backgroundColor: redColor,
+              ),
             ));
   }
 }

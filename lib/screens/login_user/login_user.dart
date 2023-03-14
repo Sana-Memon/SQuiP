@@ -14,6 +14,7 @@ class LoginUserView extends StatelessWidget {
         viewModelBuilder: () => LoginUserViewModel(),
         builder: (context, viewModel, child) => Scaffold(
             appBar: customerAppBar("User Login"),
+            resizeToAvoidBottomInset: false,
             body: Center(
               child: Column(
                 children: [
